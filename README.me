@@ -1,0 +1,33 @@
+# Iniciar un proyecto en NodeJS
+## Instalar Node y npm
+```bash
+brew install nvm
+
+nvm install 18
+```
+
+## Creamos un archivo llamado holamundo.js
+
+```bash
+touch holamundo.js
+```
+
+## Agregamos este codigo y guardamos
+
+```NodeJS
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 1337;
+
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hola mundo\n');
+}).listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});```
+
+## Ejecutamos el proyecto
+```bash
+node holamundo.js
+```
