@@ -23,11 +23,75 @@ const port = 1337;
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Hola mundo\n');
-}).listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});```
+}).listen(port, hostname, (error) => {
+    if (error) return console.log(`Error: ${error}`);
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
 
 ## Ejecutamos el proyecto
 ```bash
 node holamundo.js
 ```
+
+## Podemos hacer recoger información
+
+```NodeJS
+console.log(req);
+```
+
+## Podemos recoger variables que mandemos desde la url
+```NodeJS
+   let params = req.url.split("?")[1];
+   let query = {};
+   if (params) {
+     params = params.split("&");
+     params.forEach(param => {
+       let [key, value] = param.split("=");
+       query[key] = value;
+     });
+   }
+   console.log(query);
+
+   res.write(query.info+'\n');
+```
+
+
+# Usando npm install
+## Instalando node-tweet-stream
+```bash
+npm init
+npm install twitter
+touch twitter.js
+```
+
+## Creamos el archivo twitter.js
+```bash
+touch twitter.js
+```
+
+## Incluimos este código:
+
+```NodeJS
+var TwitterStream = require('twitter-stream-api'),
+    fs = require('fs');
+ 
+var keys = {
+    consumer_key: '',
+    consumer_secret: '',
+    token: '',
+    token_secret: ''
+};
+ 
+var Twitter = new TwitterStream(keys, false);
+Twitter.stream('statuses/filter', {
+    track: 'javascript'
+});
+ 
+Twitter.pipe(fs.createWriteStream('tweets.json'));
+```
+
+
+## nos hacemos una cuenta de twitter y generamos los datos de acceso:
+[https://developer.twitter.com/en](https://developer.twitter.com/en)
+
