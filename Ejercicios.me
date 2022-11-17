@@ -1,0 +1,90 @@
+# Ejercicio 1
+Crear un archivo con el nombre ej1.js
+Levantar un servidor utilizando Express, el servidor tiene que responder con
+el siguiente texto: 'Bienvenidos a Node.js Server Side'
+Al levantar el servidor tiene que mostrar un mensaje que diga:
+`Servidor corriendo en el puerto ${puerto}`. 
+En caso de haber un error al levantar, el servidor tiene que mostrar el siguiente mensaje: 
+`No se pudo levantar el servidor en el puerto ${puerto}`
+
+# Ejercicio 2
+Crear un archivo con el nombre ej2.js
+Levantar un servidor de Express
+Manejar las siguientes rutas:
+Ruta: Raiz del sitio ,Metodo: get, Acción: Mostrar un mensaje de bienvenida
+Ruta: Productos, Metodo: get, Acción: Mostrar un mensaje que diga: listado de productos
+Ruta: Productos, Metodo: post, Acción: Mostrar un mensaje que diga: crear un producto
+Ruta: Productos, Metodo: put, Acción: Mostrar un mensaje que diga: actualizar un producto
+Ruta: Productos, Metodo: delete, Acción: Mostrar un mensaje que diga: borrar un producto
+Ruta: Usuarios, Metodo: get, Acción: Mostrar un mensaje que diga: listado de usuarios
+Ruta: Usuarios, Metodo: post, Acción: Mostrar un mensaje que diga: crear un usuario
+Ruta: Usuarios, Metodo: put, Acción: Mostrar un mensaje que diga: actualiza un usuario
+Ruta: Usuarios, Metodo: delete, Acción: Mostrar un mensaje que diga: borrar un usuario
+Crear un método que maneje todos los verbos de HTTP para la página
+Utilizar Postman para probar todos los llamados
+
+# Ejercicio 3
+Crear un archivo con el nombre ej3.js
+Levantar un servidor de Express
+Crear un módulo para manejar las rutas de nuestra home (get y post)
+Crear un módulo para manejar las rutas de nuestros productos (get, post, delete, put)
+Cada ruta solo tiene que enviar un mensaje diciendo que página es y que método utiliza res.send('Pagina: home, método: post')
+Montar las rutas de home en '/'
+Montar las rutas de productos en '/productos'
+
+#Ejercicio 4
+Crear un archivo con el nombre ej4.js
+Levantar un servidor de Express
+Crear la siguiente ruta, url: '/', metodo: get
+Esta ruta tiene que retornar un mensaje que dice: 'Este request/response está OK', usar el método send para la respuesta
+Establecer el status en 200
+Crear la siguiente ruta, url: '/productos', metodo: get
+Esta ruta tiene que retornar un mensaje que dice: 'Ha ocurrido un error de servidor', usar el método send para la respuesta
+Establecer el status en 500
+Crear la siguiente ruta, url: '/contacto', metodo: get
+Esta ruta tiene que retornar un mensaje que dice: '404 No encontrado', usar el método send para la respuesta
+Establecer el status en 404
+
+#Ejercicio 5
+Crear un archivo con el nombre ej5.js
+Levantar un servidor de Express
+Crear la siguiente ruta, url: '/', metodo: get
+Esta ruta tiene que retornar el siguiente objeto en formato JSON:
+```JSON
+{
+  status: 200,
+  message: 'Este request/response está OK'
+}
+```
+Crear el siguiente middleware
+```Express
+var requestTime = function (req, res, next) {
+  const mensaje = `Request a ${req.baseUrl} ${Date.now()}`
+  console.log(mensaje)
+  next();
+};
+```
+Configurar el middleware
+app.use(requestTime)
+Si todo esta bien en la consola del server donde levantaste express deberías ver un mensaje similar al siguiente:
+Request realizado 1506002876731
+
+#Ejercicio 7:
+Crea una carpeta llamada eje7
+Inicia el proyecto con npm init
+Importa express y genera los archivos
+Crear un archivo names.json
+Crea una api que permita listar, guardar, eliminar y añadir nombres a archivo names.json, con métodos get, put, post y delete.
+Deberás usar el paquete fs y trabajar con la función Json de Node.
+Estructura de ejemplo:
+```JSON
+    [{
+        id: 1
+        name: “juanito”,
+        last-name: “Fernández”
+    },{
+        id: 2
+        name: “Pepito”,
+        last-name: “Pérez”
+    }]
+```

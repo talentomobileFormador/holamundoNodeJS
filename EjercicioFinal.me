@@ -1,0 +1,42 @@
+Se creará una api para que devuelva los precios del cambio con base en la moneda del €, para ello usaremos la siguiente api para actualizar los cambios https://exchangeratesapi.io/. Usaremos los módulos fetch y mysql y deberemos descargar el siguiente repositorio https://github.com/talentomobileFormador/express-ejerciciofinal
+Endpoins:
+GET /get-all/{date}
+Devuelve todos los precios al día enviado, si no se envie el date devuelve el mismo día
+POST /coin/{id}
+Actualiza una moneda
+```JSON
+    {
+       name: string,
+       price: float,
+       symbol: string,
+       country: string,
+       automatic: boolean,
+       updated_at: datetime,
+       created_at: datetime,
+    }
+```
+PUT /coin
+Crea una moneda
+```JSON
+    {
+       name: string,
+       price: float,
+       symbol: string,
+       country: string,
+       automatic: boolean,
+       updated_at: datetime,
+       created_at: datetime,
+    }
+```
+DELETE /coin/{id}
+Elimina una moneda
+GET: /coins-update
+Nos conectaremos a un servicio de actualización y en función de si la moneda tiene el valor automatic boolean activo lo actualizaremos o no
+
+Importante:
+country guardará el codigo ISO3 del Pais
+
+Pasos para empezar:
+Descarga el repositorio
+Ejecuta docker-compose up para que se levante el servicio de la base de datos.
+Crea una carpeta dentro del repositorio donde estará la resolución del ejercicio
